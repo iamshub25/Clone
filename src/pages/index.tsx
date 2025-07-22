@@ -1,31 +1,57 @@
 "use client;"
 // import { useState } from "react";
-import {IconSearch, IconArrowRight} from "@tabler/icons-react"
+import {IconSearch, IconArrowRight, IconMenu2} from "@tabler/icons-react"
 import Link from "next/link";
 import TestimonialsComponent from "@/components/testimonials"
+import { useState } from "react";
 
 
 export default function page(){
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
   return(
     <div className="bg-white">
-      <div className="sticky top-0 px-4 md:px-[30px] py-0 h-[90px] z-30 flex items-center bg-white overflow-x-auto">
-        <Link href="/" title="Homepage" className="shrink-0">
-          <img src="https://www.16personalities.com/static/images/system/logo.svg" className="w-75 h-14" />
-        </Link>
-        <div className="flex items-center justify-center grow h-full">
-          <ul className="hidden md:flex gap-6 justify-center items-center h-[100%] m-0 p-0 cursor-pointer">
-            <Link href="/" className="text-gray-600 font-sm">Personality Test</Link>
-            <Link href="/" className="text-gray-600 font-sm">Personality Types</Link>
-            <Link href="/" className="text-gray-600 font-sm">Premium Profile</Link>
-            <Link href="/" className="text-gray-600 font-sm">Teams & Pros</Link>
-            <Link href="/" className="text-gray-600 font-sm">Resources</Link>
-          </ul>
+      <div className="sticky top-0 px-4 md:px-[30px] py-0 h-auto min-h-[70px] md:h-[90px] z-30 flex flex-wrap items-center bg-white shadow-sm">
+        <div className="flex items-center justify-between w-full md:w-auto">
+          <Link href="/" title="Homepage" className="shrink-0">
+            <img src="https://www.16personalities.com/static/images/system/logo.svg" className="w-auto h-10 md:h-14" />
+          </Link>
+          <button onClick={toggleMobileMenu} className="md:hidden p-2">
+            <IconMenu2 className="w-8 h-8 text-gray-700" />
+          </button>
         </div>
-        <div className="flex gap-4 justify-center items-center">
-          <IconSearch className="w-8 h-8  cursor-pointer text-black"/>
-          <Link href={"#"}><span className="text-gray-700 font-medium text-2xl cursor-pointer">Log in</span></Link>
-          <button className="h-[60px]">
-            <span className="text-white w-40 font-medium bg-[#88619a] px-6 py-2 rounded-full flex items-center justify-center h-full cursor-pointer">Take the Test</span>
+        
+        <div className={`${mobileMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row items-start md:items-center justify-start md:justify-center w-full md:w-auto md:grow h-auto md:h-full order-3 md:order-2 py-4 md:py-0`}>
+          <ul className="flex flex-col md:flex-row gap-4 md:gap-6 justify-start md:justify-center items-start md:items-center w-full md:w-auto h-auto md:h-[100%] m-0 p-0">
+            <Link href="/" className="text-gray-600 font-sm py-2 md:py-0 border-b border-gray-100 md:border-0 w-full md:w-auto">Personality Test</Link>
+            <Link href="/" className="text-gray-600 font-sm py-2 md:py-0 border-b border-gray-100 md:border-0 w-full md:w-auto">Personality Types</Link>
+            <Link href="/" className="text-gray-600 font-sm py-2 md:py-0 border-b border-gray-100 md:border-0 w-full md:w-auto">Premium Profile</Link>
+            <Link href="/" className="text-gray-600 font-sm py-2 md:py-0 border-b border-gray-100 md:border-0 w-full md:w-auto">Teams & Pros</Link>
+            <Link href="/" className="text-gray-600 font-sm py-2 md:py-0 border-b border-gray-100 md:border-0 w-full md:w-auto">Resources</Link>
+          </ul>
+          
+          {/* Mobile-only search and take test */}
+          <div className="flex flex-col w-full gap-4 mt-4 pt-4 border-t border-gray-100 md:hidden">
+            <div className="flex items-center gap-2 px-1">
+              <IconSearch className="w-5 h-5 text-gray-600" />
+              <input type="text" placeholder="Search..." className="w-full p-2 text-sm border-b border-gray-200 focus:outline-none" />
+            </div>
+            <Link href="/" className="w-full">
+              <span className="bg-[#88619a] text-white rounded-full py-3 px-4 text-center w-full block font-medium">Take the Test</span>
+            </Link>
+            <Link href="#" className="text-gray-700 font-medium text-center py-2">Log in</Link>
+          </div>
+        </div>
+        
+        <div className="flex gap-2 md:gap-4 justify-end items-center ml-auto md:ml-0 order-2 md:order-3">
+          <IconSearch className="hidden md:block w-6 h-6 md:w-8 md:h-8 cursor-pointer text-black"/>
+          <Link href={"#"} className="hidden sm:block"><span className="text-gray-700 font-medium text-lg md:text-2xl cursor-pointer">Log in</span></Link>
+          <button className="hidden md:block h-[50px] md:h-[60px]">
+            <span className="text-white w-auto md:w-40 font-medium bg-[#88619a] px-3 md:px-6 py-2 rounded-full flex items-center justify-center h-full cursor-pointer text-sm md:text-base">Take the Test</span>
           </button>
         </div>
       </div>
