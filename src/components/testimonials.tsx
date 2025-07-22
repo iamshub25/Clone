@@ -128,7 +128,7 @@ const TestimonialsComponent = () => {
               return (
                 <div
                   key={`${testimonial.id}-${index}`}
-                  className={`flex-shrink-0 w-80 bg-white rounded-lg shadow-md border-t-4 ${colors.topBorder} hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}
+                  className={`flex-shrink-0 w-80 bg-white rounded-lg shadow-md border-t-4  hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}
                 >
                   {/* Header */}
                   <div className="p-6 pb-4">
@@ -141,14 +141,14 @@ const TestimonialsComponent = () => {
                           alt={testimonial.name}
                           className="w-12 h-12 rounded-full object-cover border-2 border-gray-100"
                         />
-                        <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full ${colors.icon} flex items-center justify-center text-xs font-bold shadow-sm`}>
+                        <div className={`absolute -bottom-1 -right-1 w-6 h-6 rounded-full  flex items-center justify-center text-xs font-bold shadow-sm`}>
                           {testimonial.name.charAt(0)}
                         </div>
                       </div>
                       <div className="ml-3">
                         <h3 className="font-semibold text-gray-900 text-lg">{testimonial.name}</h3>
                         <div className="flex flex-col">
-                          <span className={`text-xs font-semibold ${colors.accent} uppercase tracking-wider`}>
+                          <span className={`text-xs font-semibold  uppercase tracking-wider`}>
                             {testimonial.role}
                           </span>
                           <span className="text-xs text-gray-500 mt-0.5">({testimonial.type})</span>
