@@ -6,7 +6,7 @@ import TestimonialsComponent from "@/components/testimonials"
 import { useState } from "react";
 
 
-export default function page(){
+export default function Page(){
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const toggleMobileMenu = () => {
