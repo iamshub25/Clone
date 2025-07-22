@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 
 const TestimonialsComponent = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -168,14 +168,14 @@ const TestimonialsComponent = () => {
             onClick={prevSlide}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group border border-gray-200 hover:border-gray-300"
           >
-            <ChevronLeft className="w-6 h-6 text-gray-600 group-hover:text-gray-800 transition-colors" />
+            <IconArrowLeft className="w-6 h-6 text-gray-600 group-hover:text-gray-800 transition-colors" />
           </button>
 
           <button
             onClick={nextSlide}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group border border-gray-200 hover:border-gray-300"
           >
-            <ChevronRight className="w-6 h-6 text-gray-600 group-hover:text-gray-800 transition-colors" />
+            <IconArrowRight className="w-6 h-6 text-gray-600 group-hover:text-gray-800 transition-colors" />
           </button>
         </div>
 
