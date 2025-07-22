@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import Image from 'next/image';
 
 const TestimonialsComponent = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -133,7 +134,9 @@ const TestimonialsComponent = () => {
                   <div className="p-6 pb-4">
                     <div className="flex items-center mb-4">
                       <div className="relative">
-                        <img
+                        <Image
+                          width={48}
+                          height={48}
                           src={testimonial.avatar}
                           alt={testimonial.name}
                           className="w-12 h-12 rounded-full object-cover border-2 border-gray-100"
