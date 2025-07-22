@@ -141,7 +141,7 @@ const TestimonialsComponent = () => {
               return (
                 <div
                   key={`${testimonial.id}-${index}`}
-                  className={`flex-shrink-0 w-full sm:w-[90%] md:w-72 lg:w-80 mx-auto md:mx-0 bg-white rounded-lg shadow-md border-t-4 ${colors.topBorder} hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}
+                  className={`flex-shrink-0 w-full sm:w-[90%] md:w-72 lg:w-80 mx-auto md:mx-0 bg-white rounded-lg shadow-md border-t-4  hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}
                 >
                   {/* Header */}
                   <div className="p-4 sm:p-5 md:p-6 pb-3 md:pb-4">
