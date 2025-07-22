@@ -91,7 +91,7 @@ const TestimonialsComponent = () => {
     };
     // Make sure color is lowercase to handle case inconsistencies
     const normalizedColor = color?.toLowerCase() || 'purple';
-    return colorMap[normalizedColor] || colorMap.purple;
+    return normalizedColor || colorMap.purple;
   };
 
   const nextSlide = () => {
