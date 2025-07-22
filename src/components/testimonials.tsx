@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import Image from 'next/image';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 const TestimonialsComponent = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -103,12 +104,24 @@ const TestimonialsComponent = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
+  // Responsive breakpoints
+  const isLargeScreen = useMediaQuery('(min-width: 1280px)');
+  const isMediumScreen = useMediaQuery('(min-width: 768px) and (max-width: 1279px)');
+  const isSmallScreen = useMediaQuery('(max-width: 767px)');
+
   const getVisibleTestimonials = () => {
-    // Show 5 cards on desktop, 3 on tablet, 1 on mobile
-    const desktopCount = 5;
+    // Show different number of cards based on screen size
+    let visibleCount = 5; // Default for large screens
+    
+    if (isMediumScreen) {
+      visibleCount = 3;
+    } else if (isSmallScreen) {
+      visibleCount = 1;
+    }
+    
     const result = [];
     
-    for (let i = 0; i < desktopCount; i++) {
+    for (let i = 0; i < visibleCount; i++) {
       const index = (currentIndex + i) % testimonials.length;
       result.push(testimonials[index]);
     }
@@ -117,21 +130,21 @@ const TestimonialsComponent = () => {
   };
 
   return (
-    <div className="w-full bg-[#f6f6f7] py-12">
-      <div className="max-w-8xl mx-auto px-4">
+    <div className="w-full bg-[#f6f6f7] py-8 md:py-12">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative">
           {/* Horizontal Scrolling Container */}
-          <div className="flex space-x-6 overflow-hidden justify-center">
+          <div className="flex flex-wrap md:flex-nowrap space-y-4 md:space-y-0 md:space-x-6 overflow-hidden justify-center">
             {getVisibleTestimonials().map((testimonial, index) => {
               // Ensure color exists, default to purple if not
               const colors = getColorClasses(testimonial.color || 'purple');
               return (
                 <div
                   key={`${testimonial.id}-${index}`}
-                  className={`flex-shrink-0 w-80 bg-white rounded-lg shadow-md border-t-4  hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}
+                  className={`flex-shrink-0 w-full sm:w-[90%] md:w-72 lg:w-80 mx-auto md:mx-0 bg-white rounded-lg shadow-md border-t-4 ${colors.topBorder} hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}
                 >
                   {/* Header */}
-                  <div className="p-6 pb-4">
+                  <div className="p-4 sm:p-5 md:p-6 pb-3 md:pb-4">
                     <div className="flex items-center mb-4">
                       <div className="relative">
                         <Image
@@ -146,7 +159,7 @@ const TestimonialsComponent = () => {
                         </div>
                       </div>
                       <div className="ml-3">
-                        <h3 className="font-semibold text-gray-900 text-lg">{testimonial.name}</h3>
+                        <h3 className="font-semibold text-gray-900 text-base md:text-lg">{testimonial.name}</h3>
                         <div className="flex flex-col">
                           <span className={`text-xs font-semibold  uppercase tracking-wider`}>
                             {testimonial.role}
@@ -166,29 +179,29 @@ const TestimonialsComponent = () => {
             })}
           </div>
 
-          {/* Navigation Arrows */}
+          {/* Navigation Arrows - Hidden on mobile */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group border border-gray-200 hover:border-gray-300"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 items-center justify-center group border border-gray-200 hover:border-gray-300"
           >
-            <IconArrowLeft className="w-6 h-6 text-gray-600 group-hover:text-gray-800 transition-colors" />
+            <IconArrowLeft className="w-5 h-5 lg:w-6 lg:h-6 text-gray-600 group-hover:text-gray-800 transition-colors" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 flex items-center justify-center group border border-gray-200 hover:border-gray-300"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-200 items-center justify-center group border border-gray-200 hover:border-gray-300"
           >
-            <IconArrowRight className="w-6 h-6 text-gray-600 group-hover:text-gray-800 transition-colors" />
+            <IconArrowRight className="w-5 h-5 lg:w-6 lg:h-6 text-gray-600 group-hover:text-gray-800 transition-colors" />
           </button>
         </div>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center items-center mt-8 space-x-2">
+        <div className="flex justify-center items-center mt-6 md:mt-8 space-x-1.5 md:space-x-2">
           {testimonials.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 md:w-2.5 md:h-2.5 rounded-full transition-all duration-300 ${
                 currentIndex === index ? 'bg-gray-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
               }`}
             />
@@ -199,13 +212,13 @@ const TestimonialsComponent = () => {
         <div className="flex md:hidden justify-center mt-6 space-x-4">
           <button
             onClick={prevSlide}
-            className="px-4 py-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-sm font-medium text-gray-700 border border-gray-200"
+            className="px-3 sm:px-4 py-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-xs sm:text-sm font-medium text-gray-700 border border-gray-200"
           >
             Previous
           </button>
           <button
             onClick={nextSlide}
-            className="px-4 py-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-sm font-medium text-gray-700 border border-gray-200"
+            className="px-3 sm:px-4 py-2 bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-200 text-xs sm:text-sm font-medium text-gray-700 border border-gray-200"
           >
             Next
           </button>
