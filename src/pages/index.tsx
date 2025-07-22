@@ -9,9 +9,9 @@ export default function page(){
   return(
     <div className="bg-white">
       <div className="sticky top-0 px-4 md:px-[30px] py-0 h-[90px] z-30 flex items-center bg-white overflow-x-auto">
-        <a href="/" title="Homepage" className="shrink-0">
+        <Link href="/" title="Homepage" className="shrink-0">
           <img src="https://www.16personalities.com/static/images/system/logo.svg" className="w-75 h-14" />
-        </a>
+        </Link>
         <div className="flex items-center justify-center grow h-full">
           <ul className="hidden md:flex gap-6 justify-center items-center h-[100%] m-0 p-0 cursor-pointer">
             <Link href="/" className="text-gray-600 font-sm">Personality Test</Link>
@@ -23,7 +23,7 @@ export default function page(){
         </div>
         <div className="flex gap-4 justify-center items-center">
           <IconSearch className="w-8 h-8  cursor-pointer text-black"/>
-          <a><span className="text-gray-700 font-medium text-2xl cursor-pointer">Log in</span></a>
+          <Link href={"#"}><span className="text-gray-700 font-medium text-2xl cursor-pointer">Log in</span></Link>
           <button className="h-[60px]">
             <span className="text-white w-40 font-medium bg-[#88619a] px-6 py-2 rounded-full flex items-center justify-center h-full cursor-pointer">Take the Test</span>
           </button>
@@ -78,7 +78,7 @@ export default function page(){
               <p className="mb-[20px] text-lg text-black">In our free type descriptions you’ll learn what really drives, inspires, and worries different personality types, helping you build more meaningful relationships.</p>
               <div className="flex flex-wrap gap-4">
                 <button className="bg-green-600 px-4 py-2 text-white rounded-full">Personality Types</button>
-                <span className="flex justify-center items-center "><a href="/" className="uppercase text-blue-400 font-bold flex gap-2">Explore Theory<IconArrowRight size={25}/></a></span>
+                <span className="flex justify-center items-center "><Link href="/" className="uppercase text-blue-400 font-bold flex gap-2">Explore Theory<IconArrowRight size={25}/></Link></span>
               </div>
             </div>
           </div>
