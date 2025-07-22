@@ -1,6 +1,6 @@
 "use client;"
 // import { useState } from "react";
-import {Search, MoveRight} from "lucide-react"
+import {IconSearch, IconArrowRight} from "@tabler/icons-react"
 import Link from "next/link";
 import TestimonialsComponent from "@/components/testimonials"
 
@@ -22,7 +22,7 @@ export default function page(){
           </ul>
         </div>
         <div className="flex gap-4 justify-center items-center">
-          <Search className="w-8 h-8  cursor-pointer text-black"/>
+          <IconSearch className="w-8 h-8  cursor-pointer text-black"/>
           <a><span className="text-gray-700 font-medium text-2xl cursor-pointer">Log in</span></a>
           <button className="h-[60px]">
             <span className="text-white w-40 font-medium bg-[#88619a] px-6 py-2 rounded-full flex items-center justify-center h-full cursor-pointer">Take the Test</span>
@@ -38,7 +38,7 @@ export default function page(){
             <h1 className="mb-[20px] font-bold text-white mt-0 text-3xl md:text-5xl px-2">“It’s so incredible to finally be understood.”</h1>
             <p className="mb-[30px] text-base md:text-lg max-w-[640px] mx-auto px-2">Only 10 minutes to get a “freakishly accurate” description of who you are and why you do things the way you do.</p>
             <button className="h-[80px]">
-              <span className="text-white w-60 font-bold text-xl bg-[#88619a] px-6 py-2 rounded-full flex items-center justify-center h-full gap-3 cursor-pointer">Take the Test<MoveRight size={30}/></span>
+              <span className="text-white w-60 font-bold text-xl bg-[#88619a] px-6 py-2 rounded-full flex items-center justify-center h-full gap-3 cursor-pointer">Take the Test<IconArrowRight size={30}/></span>
             </button>
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function page(){
               <p className="mb-[20px] text-lg text-black">In our free type descriptions you’ll learn what really drives, inspires, and worries different personality types, helping you build more meaningful relationships.</p>
               <div className="flex flex-wrap gap-4">
                 <button className="bg-green-600 px-4 py-2 text-white rounded-full">Personality Types</button>
-                <span className="flex justify-center items-center "><a href="/" className="uppercase text-blue-400 font-bold flex gap-2">Explore Theory<MoveRight size={25}/></a></span>
+                <span className="flex justify-center items-center "><a href="/" className="uppercase text-blue-400 font-bold flex gap-2">Explore Theory<IconArrowRight size={25}/></a></span>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@ export default function page(){
         <h2 className="mt-8 font-bold text-3xl md:text-5xl mb-4 px-4 text-center">Curious how accurate we are about you?</h2>
         <div className="flex gap-4 z-10 px-4">
             <button className="h-[80px]">
-              <span className="text-white w-60 font-bold text-xl bg-[#88619a] px-6 py-2 rounded-full flex items-center justify-center h-full gap-3 cursor-pointer">Take the Test<MoveRight size={30}/></span>
+              <span className="text-white w-60 font-bold text-xl bg-[#88619a] px-6 py-2 rounded-full flex items-center justify-center h-full gap-3 cursor-pointer">Take the Test<IconArrowRight size={30}/></span>
             </button>         
         </div>
         <svg className="cta__shape cta__shape--bottom" viewBox="0 0 1920 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
